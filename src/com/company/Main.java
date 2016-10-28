@@ -1,54 +1,67 @@
 package com.company;
 
+import com.sun.scenario.effect.impl.prism.ps.PPSZeroSamplerPeer;
+
 import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, RoomException {
 
         double Lenght;
         double Height;
         double Width;
+        Room livingRoom = null;
+        Room kitchen = null;
+        Room bathroom = null;
 
         Scanner scanner = new Scanner(System.in);
+        try {
+            System.out.println("Podaj wymiary kuchni");
+            System.out.println("Podaj wysokosc");
+            Height = scanner.nextDouble();
 
-        System.out.println("Podaj wymiary kuchni");
-        System.out.println("Podaj wysokosc");
-        Height = scanner.nextDouble();
+            System.out.println("Podaj Dlugosc");
+            Lenght = scanner.nextDouble();
 
-        System.out.println("Podaj Dlugosc");
-        Lenght = scanner.nextDouble();
-
-        System.out.println("Podaj Szerokosc");
-        Width = scanner.nextDouble();
+            System.out.println("Podaj Szerokosc");
+            Width = scanner.nextDouble();
 
 
-	    Room kitchen = new Room(Lenght,Height,Width);
+            kitchen = new Room(Lenght, Height, Width);
 
-        System.out.println("Podaj wymiary Lazienki");
-        System.out.println("Podaj wysokosc");
-        Height = scanner.nextDouble();
+            System.out.println("Podaj wymiary Lazienki");
+            System.out.println("Podaj wysokosc");
+            Height = scanner.nextDouble();
 
-        System.out.println("Podaj Dlugosc");
-        Lenght = scanner.nextDouble();
+            System.out.println("Podaj Dlugosc");
+            Lenght = scanner.nextDouble();
 
-        System.out.println("Podaj Szerokosc");
-        Width = scanner.nextDouble();
+            System.out.println("Podaj Szerokosc");
+            Width = scanner.nextDouble();
 
-        Room bathroom = new Room(Lenght,Height,Width);
+            bathroom = new Room(Lenght, Height, Width);
 
-        System.out.println("Podaj wymiary Pokoju dzinnego");
-        System.out.println("Podaj wysokosc");
-        Height = scanner.nextDouble();
+            System.out.println("Podaj wymiary Pokoju dzinnego");
+            System.out.println("Podaj wysokosc");
+            Height = scanner.nextDouble();
 
-        System.out.println("Podaj Dlugosc");
-        Lenght = scanner.nextDouble();
+            System.out.println("Podaj Dlugosc");
+            Lenght = scanner.nextDouble();
 
-        System.out.println("Podaj Szerokosc");
-        Width = scanner.nextDouble();
+            System.out.println("Podaj Szerokosc");
+            Width = scanner.nextDouble();
 
-        Room livingRoom = new Room(Lenght,Height,Width);
+            livingRoom = new Room(Lenght, Height, Width);
+        }
+        catch(RoomException ex){
+            System.out.println("Error : " + ex.Message + ex.Number);
+            return;
+        }
+        finally {
+            System.out.println("Finally done");
+        }
 
         System.out.println("Kuchnia :");
         System.out.println("Objetosc : " + kitchen.Objetosc());
@@ -114,11 +127,19 @@ class Room
     public static int KosztPodlogi = 25;
     public static int KosztMalowania = 14;
 
-    public Room(double lenght, double height, double width)
-    {
+    public Room(double lenght, double height, double width) throws RoomException {
         Lenght = lenght;
         Height = height;
         Width = width;
+        if(Lenght <= 0){
+            throw new RoomException("1","Dlugosc musi byc wieksza 0");
+        }
+        if(Width <= 0){
+            throw new RoomException("2","Szerokosc musi byc wieksza od 0");
+        }
+        if(Height <= 0){
+            throw new RoomException("2","Wysokosc musi byc wieksza od 0");
+        }
     }
 
     public double Objetosc()
