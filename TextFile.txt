@@ -1,0 +1,21 @@
+Kuchnia :
+Objetosc : 40.0
+Powierzchnia Scian : 26.0
+Powierzchnia Podloig : 18.0
+Powierzchnnia Scian : 26.0
+Koszt Podlogi : 450.0
+Koszt malowania scian : 364.0
+Lazienka :
+Objetosc : 24.0
+Powierzchnia Scian : 22.0
+Powierzchnia Podloig : 14.0
+Powierzchnnia Scian : 22.0
+Koszt Podlogi : 350.0
+Koszt malowania scian : 308.0
+Pokoj dzienny :
+Objetosc : 10.0
+Powierzchnia Scian : 26.0
+Powierzchnia Podloig : 6.0
+Powierzchnnia Scian : 26.0
+Koszt Podlogi : 150.0
+Koszt malowania scian : 364.0
